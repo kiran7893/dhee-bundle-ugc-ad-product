@@ -1,0 +1,9 @@
+{
+  "name": "dhee-bundle-ugc-ad-product",
+  "version": "0.1.0",
+  "description": "Themed product / UGC video ad pipeline for Dhee — real product preserved, model-composited into themed scenes, with a designed multilingual voiceover.",
+  "keywords": ["dhee-bundle"],
+  "dhee": { "bundles": "./bundles" },
+  "license": "MIT",
+  "files": ["bundles", "LICENSE", "README.md"]
+}
