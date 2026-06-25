@@ -1,9 +1,17 @@
 {
-  "name": "dhee-bundle-ugc-ad-product",
+  "name": "@dhee_ai/bundle-ugc-ad-product",
   "version": "0.1.0",
   "description": "Themed product / UGC video ad pipeline for Dhee — real product preserved, model-composited into themed scenes, with a designed multilingual voiceover.",
+  "type": "module",
   "keywords": ["dhee-bundle"],
+  "homepage": "https://github.com/dheeai/dhee-bundle-ugc-ad-product#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dheeai/dhee-bundle-ugc-ad-product.git"
+  },
   "dhee": { "bundles": "./bundles" },
   "license": "MIT",
-  "files": ["bundles", "LICENSE", "README.md"]
+  "files": ["bundles", "LICENSE", "README.md"],
+  "engines": { "node": ">=20.0.0" },
+  "publishConfig": { "access": "public" }
 }
