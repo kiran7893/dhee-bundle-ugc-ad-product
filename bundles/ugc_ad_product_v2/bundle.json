@@ -17,9 +17,9 @@
       "ffmpeg.concat": ">=0.1.0"
     },
     "runnerPackages": {
-      "comfy.matte": "dhee-runner-matte",
-      "comfy.boogu": "dhee-runner-boogu",
-      "comfy.tts": "dhee-runner-tts"
+      "comfy.matte": "@dhee_ai/runner-matte",
+      "comfy.boogu": "@dhee_ai/runner-boogu",
+      "comfy.tts": "@dhee_ai/runner-tts"
     }
   },
   "inputs": [

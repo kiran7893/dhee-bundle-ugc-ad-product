@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate bundle + schema JSON
+        run: |
+          node -e '
+          const fs = require("fs");
+          const path = require("path");
+          const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => {
+            const p = path.join(d, e.name);
+            return e.isDirectory() ? walk(p) : p.endsWith(".json") ? [p] : [];
+          });
+          const files = walk("bundles");
+          let bundles = 0;
+          for (const f of files) {
+            const j = JSON.parse(fs.readFileSync(f, "utf8"));
+            if (path.basename(f) === "bundle.json") {
+              bundles++;
+              for (const k of ["id", "goal", "nodes", "displayName", "summary"]) {
+                if (!(k in j)) throw new Error(`${f}: bundle.json missing "${k}"`);
+              }
+            }
+          }
+          if (bundles === 0) throw new Error("no bundle.json found under bundles/");
+          console.log(`✓ ${files.length} JSON files valid, ${bundles} bundle(s)`);
+          '
